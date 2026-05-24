@@ -19,7 +19,7 @@ Los cambios se agrupan en las siguientes categorías:
 
 ---
 
-## [Sin publicar]
+## [1.0.0] - 2026-05-24
 
 ### Añadido
 
@@ -33,7 +33,9 @@ Los cambios se agrupan en las siguientes categorías:
 - Configuración multi-etapa en `Dockerfile` para la compilación optimizada y descarga automática de la voz en español (`es_ES-carlfm-x_low`).
 - Suite de pruebas integrales en `tests/test_endpoints.py` utilizando `pytest` y `unittest.mock`.
 - Archivo `requirements.txt` con la lista de dependencias necesarias para desarrollo y ejecución.
+- Ejecución de test integrados en cada pipeline
 
+## [Sin publicar]
 
 ---
 
