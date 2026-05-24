@@ -144,6 +144,7 @@ chore(deps): actualizar openai-sdk a v5.2.1
 - [ ] El código compila y los tests pasan localmente.
 - [ ] El linter no reporta errores (`npm run lint` o equivalente).
 - [ ] La rama está actualizada con `main` (rebase).
+- [ ] El archivo [CHANGELOG.md](file:///home/danuser2018/workspace/tts-capability/CHANGELOG.md) ha sido actualizado bajo la sección `[Sin publicar]`.
 - [ ] La descripción de la PR está completa.
 
 ### Plantilla de PR
@@ -163,6 +164,7 @@ Al abrir una PR, completa siempre los siguientes apartados:
 ## Checklist
 - [ ] Tests añadidos / actualizados
 - [ ] Documentación actualizada si aplica
+- [ ] Registro de cambios ([CHANGELOG.md](file:///home/danuser2018/workspace/tts-capability/CHANGELOG.md)) actualizado
 - [ ] No introduce secretos o datos sensibles
 - [ ] Breaking changes documentados (si aplica)
 
