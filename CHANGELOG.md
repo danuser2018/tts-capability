@@ -27,6 +27,7 @@ Los cambios se agrupan en las siguientes categorías:
   convenciones de commits, guía de Pull Requests y buenas prácticas para
   desarrollo asistido con IA.
 - Fichero `CHANGELOG.md` con el formato Keep a Changelog v1.1.0 en castellano.
+- Fichero `README.md` completo con la descripción del proyecto, objetivos de diseño, arquitectura técnica propuesta, especificación del endpoint de API (`POST /synthesize`) y guía de uso para el servicio de síntesis de voz (TTS).
 
 ---
 
