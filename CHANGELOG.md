@@ -19,6 +19,12 @@ Los cambios se agrupan en las siguientes categorías:
 
 ---
 
+## [1.1.0] - 2026-06-06
+
+### Añadido
+
+- Nuevo endpoint health para chequear si el servicio está levantado o no.
+
 ## [1.0.0] - 2026-05-24
 
 ### Añadido

@@ -17,6 +17,10 @@ class SynthesizeRequest(BaseModel):
         json_schema_extra={"example": "Hola mundo"}
     )
 
+@router.get("/health")
+def health_check():
+    return {"status": "ok"}
+
 @router.post("/synthesize")
 async def synthesize(request: SynthesizeRequest):
     """
