@@ -5,6 +5,15 @@ from app.main import app
 
 client = TestClient(app)
 
+def test_health_check():
+    """
+    Test successful call to healthcheck
+    """
+    response = client.get("/health")
+    assert response.status_code == 200
+    assert response.json() == {"status": "ok"}
+
+
 def test_synthesize_success():
     """
     Test successful speech synthesis using mock.
