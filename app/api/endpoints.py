@@ -21,7 +21,7 @@ class SynthesizeRequest(BaseModel):
 def health_check():
     return {"status": "ok"}
 
-@router.post("/synthesize")
+@router.post("/v1/synthesize")
 async def synthesize(request: SynthesizeRequest):
     """
     Synthesize text message and return a binary WAV audio file
