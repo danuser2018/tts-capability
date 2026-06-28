@@ -19,7 +19,11 @@ Los cambios se agrupan en las siguientes categorías:
 
 ---
 
-## Sin publicar
+## [1.2.0] - 2026-06-28
+
+### Cambiado
+
+- Versionado del endpoint `/synthesize` a `/v1/synthesize` para alinearse con el estándar ADR-004.
 
 ### Añadido
 
