@@ -19,6 +19,12 @@ Los cambios se agrupan en las siguientes categorías:
 
 ---
 
+## Sin publicar
+
+### Añadido
+
+- Nueva carpeta `.agents/skills` con información relevante para la IA.
+
 ## [1.1.0] - 2026-06-06
 
 ### Añadido
@@ -40,8 +46,6 @@ Los cambios se agrupan en las siguientes categorías:
 - Suite de pruebas integrales en `tests/test_endpoints.py` utilizando `pytest` y `unittest.mock`.
 - Archivo `requirements.txt` con la lista de dependencias necesarias para desarrollo y ejecución.
 - Ejecución de test integrados en cada pipeline
-
-## [Sin publicar]
 
 ---
 
