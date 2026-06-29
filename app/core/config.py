@@ -2,10 +2,10 @@ import os
 import logging
 from dotenv import load_dotenv
 
-# Cargar variables de entorno desde el archivo .env si existe
+# Load environment variables from .env file if it exists
 load_dotenv()
 
-# Configuración básica de logging para toda la aplicación
+# Basic logging configuration for the entire application
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
