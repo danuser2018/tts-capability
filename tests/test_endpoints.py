@@ -32,7 +32,10 @@ def test_synthesize_empty_message():
     """
     response = client.post("/v1/synthesize", json={"msg": "   "})
     assert response.status_code == 400
-    assert "cannot be empty" in response.json()["detail"]
+    res_json = response.json()
+    assert res_json["error"] == "BadRequest"
+    assert "cannot be empty" in res_json["message"]
+    assert res_json["status"] == 400
 
 def test_synthesize_missing_msg_field():
     """
@@ -40,6 +43,9 @@ def test_synthesize_missing_msg_field():
     """
     response = client.post("/v1/synthesize", json={})
     assert response.status_code == 422
+    res_json = response.json()
+    assert res_json["error"] == "ValidationError"
+    assert res_json["status"] == 422
 
 def test_synthesize_error_handling():
     """
@@ -48,4 +54,7 @@ def test_synthesize_error_handling():
     with patch("app.api.endpoints.tts_engine.synthesize", side_effect=Exception("ONNX Runtime error")):
         response = client.post("/v1/synthesize", json={"msg": "Hola"})
         assert response.status_code == 500
-        assert "speech synthesis engine failure" in response.json()["detail"]
+        res_json = response.json()
+        assert res_json["error"] == "InternalServerError"
+        assert "speech synthesis engine failure" in res_json["message"]
+        assert res_json["status"] == 500

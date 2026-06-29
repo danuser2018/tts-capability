@@ -19,10 +19,11 @@ Los cambios se agrupan en las siguientes categorías:
 
 ---
 
-## [Sin publicar]
+## [1.3.0] - 2026-06-29
 
 ### Corregido
 
+- Implementado el formato de payload de error unificado de `ADR-004` para todas las respuestas HTTP `4xx` y `5xx` en el API.
 - Corregida la documentación en `README.md` para referenciar el endpoint versionado `/v1/synthesize` y documentar el endpoint de salud `/health`.
 - Traducidos al inglés los comentarios en `app/core/config.py` y los mensajes de consola/aserción en `test_synthesis.py` para adherir a la invariante lingüística del ecosistema.
 - Corregida la tabla de herramientas sugeridas en `CONTRIBUTING.md` para adaptarla a un microservicio de Python (`pytest`, `unittest`).
