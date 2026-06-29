@@ -19,6 +19,15 @@ Los cambios se agrupan en las siguientes categorías:
 
 ---
 
+## [Sin publicar]
+
+### Corregido
+
+- Corregida la documentación en `README.md` para referenciar el endpoint versionado `/v1/synthesize` y documentar el endpoint de salud `/health`.
+- Traducidos al inglés los comentarios en `app/core/config.py` y los mensajes de consola/aserción en `test_synthesis.py` para adherir a la invariante lingüística del ecosistema.
+- Corregida la tabla de herramientas sugeridas en `CONTRIBUTING.md` para adaptarla a un microservicio de Python (`pytest`, `unittest`).
+- Removida la versión de Python 3.10 de la matriz en `.github/workflows/tests.yml` para alinearla con el requerimiento de Python 3.11+.
+
 ## [1.2.0] - 2026-06-28
 
 ### Cambiado

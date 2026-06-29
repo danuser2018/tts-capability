@@ -61,9 +61,9 @@ tts-capability/
 
 ## 🔌 Especificación de la API (REST API)
 
-La aplicación expone un único endpoint de síntesis:
+La aplicación expone los siguientes endpoints:
 
-### `POST /synthesize`
+### `POST /v1/synthesize`
 
 Sintetiza el texto enviado en el cuerpo de la petición y devuelve un flujo binario con el archivo de audio resultante.
 
@@ -83,8 +83,25 @@ Sintetiza el texto enviado en el cuerpo de la petición y devuelve un flujo bina
   * Formato del Audio: **PCM 16-bit mono 16000 Hz** (empaquetado en contenedor WAV estándar).
 
 * **Respuesta de Error**:
+  * Código HTTP: `400 Bad Request` (si el parámetro `msg` está vacío o consiste únicamente en espacios en blanco).
   * Código HTTP: `422 Unprocessable Entity` (si el formato del JSON es incorrecto o falta el parámetro `msg`).
   * Código HTTP: `500 Internal Server Error` (si ocurre un fallo interno en el motor de síntesis).
+
+---
+
+### `GET /health`
+
+Retorna el estado de salud del servicio para verificar que esté levantado y respondiendo peticiones.
+
+* **Respuesta de Éxito (Success Response)**:
+  * Código HTTP: `200 OK`
+  * Content-Type: `application/json`
+  * Cuerpo de la respuesta:
+    ```json
+    {
+      "status": "ok"
+    }
+    ```
 
 ---
 
@@ -137,7 +154,7 @@ Sintetiza el texto enviado en el cuerpo de la petición y devuelve un flujo bina
 Puedes probar el servicio ejecutando el siguiente comando `curl` en tu terminal:
 
 ```bash
-curl -X POST http://localhost:8000/synthesize \
+curl -X POST http://localhost:8000/v1/synthesize \
   -H "Content-Type: application/json" \
   -d '{"msg": "Hola mundo"}' \
   --output saludo.wav

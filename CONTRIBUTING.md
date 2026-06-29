@@ -270,9 +270,9 @@ Requisito claro → Prompt preciso → Revisión crítica → Tests → Commit
 
 | Nivel | Scope | Herramienta sugerida |
 |---|---|---|
-| Unitario | Funciones y módulos individuales | Jest / Vitest |
-| Integración | Interacción entre módulos | Supertest / Jest |
-| E2E | Flujos completos desde el usuario | Playwright / Cypress |
+| Unitario | Funciones y módulos individuales | pytest / unittest |
+| Integración | Interacción entre módulos | pytest (FastAPI TestClient / httpx) |
+| E2E | Flujos completos desde el usuario | pytest / scripts de prueba de integración (ej. test_synthesis.py) |
 
 ---
 
