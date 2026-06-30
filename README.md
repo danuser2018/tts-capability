@@ -113,6 +113,7 @@ El comportamiento y los modelos cargados en el servicio se controlan mediante la
 |---|---|---|---|
 | `TTS_MODEL_NAME` | Sí (con default) | `es_ES-carlfm-x_low` | Identificador o nombre base del modelo de voz de Piper TTS. |
 | `TTS_MODEL_DIR` | No | `models` | Carpeta local donde residen los modelos (archivos `.onnx` y `.onnx.json`). |
+| `TTS_MODEL_URL` | No | [Enlace carlfm](https://huggingface.co/rhasspy/piper-voices/resolve/main/es/es_ES/carlfm/x_low/es_ES-carlfm-x_low.onnx) | URL de descarga del archivo de modelo `.onnx` de Piper. Utilizado por el instalador del host. |
 | `PORT` | No | `8000` | Puerto en el que escucha la API REST del servicio. |
 | `MODEL_PATH` | No | — | *(Deprecado)* Ruta absoluta o relativa al modelo ONNX. Mantenido como fallback. |
 
