@@ -105,6 +105,22 @@ Retorna el estado de salud del servicio para verificar que esté levantado y res
 
 ---
 
+## ⚙️ Configuración (Variables de Entorno)
+
+El comportamiento y los modelos cargados en el servicio se controlan mediante las siguientes variables de entorno (que pueden definirse en un archivo `.env` local basándose en el archivo [.env.example](file:///home/danuser2018/workspace/tts-capability/.env.example)):
+
+| Variable | Requerida | Valor por Defecto | Descripción |
+|---|---|---|---|
+| `TTS_MODEL_NAME` | Sí (con default) | `es_ES-carlfm-x_low` | Identificador o nombre base del modelo de voz de Piper TTS. |
+| `TTS_MODEL_DIR` | No | `models` | Carpeta local donde residen los modelos (archivos `.onnx` y `.onnx.json`). |
+| `PORT` | No | `8000` | Puerto en el que escucha la API REST del servicio. |
+| `MODEL_PATH` | No | — | *(Deprecado)* Ruta absoluta o relativa al modelo ONNX. Mantenido como fallback. |
+
+> [!IMPORTANT]
+> **Validación Fail-Fast:** Al iniciar el servidor, el servicio realiza una comprobación estricta de la presencia del modelo y su archivo JSON de configuración. Si alguno de los archivos `{TTS_MODEL_DIR}/{TTS_MODEL_NAME}.onnx` o `{TTS_MODEL_DIR}/{TTS_MODEL_NAME}.onnx.json` no está presente, el arranque fallará inmediatamente lanzando un error descriptivo.
+
+---
+
 ## 🚀 Guía de Despliegue y Uso
 
 ### Ejecución Local en Desarrollo
