@@ -58,3 +58,68 @@ def test_synthesize_error_handling():
         assert res_json["error"] == "InternalServerError"
         assert "speech synthesis engine failure" in res_json["message"]
         assert res_json["status"] == 500
+
+def test_lifespan_success():
+    import asyncio
+    from app.main import lifespan
+    from app.core.config import settings
+
+    with patch("os.path.exists", return_value=True) as mock_exists, \
+         patch("app.main.tts_engine.load_model") as mock_load:
+        
+        async def run_test():
+            async with lifespan(None):
+                pass
+                
+        asyncio.run(run_test())
+        
+        mock_exists.assert_any_call(settings.model_path)
+        mock_exists.assert_any_call(settings.config_path)
+        mock_load.assert_called_once_with(settings.model_path)
+
+def test_lifespan_fails_when_onnx_missing():
+    import asyncio
+    from app.main import lifespan
+    
+    # Simulate ONNX missing (first call to exists returns False)
+    with patch("os.path.exists", side_effect=[False, True]), \
+         patch("app.main.tts_engine.load_model") as mock_load:
+        
+        async def run_test():
+            try:
+                async with lifespan(None):
+                    pass
+                assert False, "Should have raised FileNotFoundError"
+            except FileNotFoundError as e:
+                assert "ONNX model file not found" in str(e)
+                
+        asyncio.run(run_test())
+        mock_load.assert_not_called()
+
+def test_lifespan_fails_when_json_missing():
+    import asyncio
+    from app.main import lifespan
+    
+    # Simulate ONNX exists (True) but config JSON missing (False)
+    with patch("os.path.exists", side_effect=[True, False]), \
+         patch("app.main.tts_engine.load_model") as mock_load:
+        
+        async def run_test():
+            try:
+                async with lifespan(None):
+                    pass
+                assert False, "Should have raised FileNotFoundError"
+            except FileNotFoundError as e:
+                assert "ONNX config file not found" in str(e)
+                
+        asyncio.run(run_test())
+        mock_load.assert_not_called()
+
+def test_settings_validation_empty_model_name():
+    from app.core.config import Settings
+    
+    with patch.dict("os.environ", {"TTS_MODEL_NAME": "   "}):
+        with pytest.raises(ValueError) as excinfo:
+            Settings()
+        assert "TTS_MODEL_NAME cannot be empty" in str(excinfo.value)
+
