@@ -32,7 +32,8 @@ COPY tests /app/tests
 
 # Environment variables
 ENV PORT=8000
-ENV MODEL_PATH=/app/models/es_ES-carlfm-x_low.onnx
+ENV TTS_MODEL_NAME=es_ES-carlfm-x_low
+ENV TTS_MODEL_DIR=/app/models
 
 EXPOSE 8000
 

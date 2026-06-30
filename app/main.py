@@ -1,3 +1,4 @@
+import os
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.exceptions import RequestValidationError
@@ -8,8 +9,17 @@ from app.api.endpoints import router as api_router
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    # Validate that the model and its configuration exist (fail-fast)
+    model_path = settings.model_path
+    config_path = settings.config_path
+
+    if not os.path.exists(model_path):
+        raise FileNotFoundError(f"ONNX model file not found at: {model_path}")
+    if not os.path.exists(config_path):
+        raise FileNotFoundError(f"ONNX config file not found at: {config_path}")
+
     # Load the voice model during server startup
-    tts_engine.load_model(settings.MODEL_PATH)
+    tts_engine.load_model(model_path)
     yield
     # No shutdown cleanup is required for ONNX Runtime session
 

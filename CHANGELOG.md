@@ -19,6 +19,22 @@ Los cambios se agrupan en las siguientes categorías:
 
 ---
 
+## [1.4.0] - 2026-06-30
+
+### Añadido
+
+- Configuración dinámica del modelo de voz de Piper TTS en el arranque mediante las variables de entorno `TTS_MODEL_NAME` y `TTS_MODEL_DIR`.
+- Validación de inicio rápido (fail-fast) en el evento `lifespan` de FastAPI que aborta el arranque del contenedor si faltan los archivos de modelo `.onnx` o de configuración `.onnx.json`.
+- Pruebas unitarias en `tests/test_endpoints.py` para cubrir la inicialización exitosa, fallas por archivos ausentes y control de nombres de modelo vacíos.
+
+### Cambiado
+
+- Dockerfile de `tts-capability` actualizado para definir y exponer por defecto `TTS_MODEL_NAME` y `TTS_MODEL_DIR` en lugar de la variable de entorno obsoleta `MODEL_PATH`.
+
+### Obsoleto
+
+- Deprecado el uso directo de `MODEL_PATH` en favor de `TTS_MODEL_NAME` y `TTS_MODEL_DIR`, manteniendo soporte retrospectivo automático si la variable antigua está definida.
+
 ## [1.3.0] - 2026-06-29
 
 ### Corregido
